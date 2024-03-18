@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Survey Form</title>
+</head>
+<body>
+
+<h1>Student Survey Form</h1>
+<p>Required fields are marked with an asterisk (*)</p>
+
+<form action="/submit-survey" method="post">
+
+    <!-- Personal Information Section -->
+    <fieldset>
+        <legend>Personal Information:</legend>
+        First name*: <input type="text" name="firstName" required><br>
+        Last name*: <input type="text" name="lastName" required><br>
+        Street Address*: <input type="text" name="streetAddress" required><br>
+        City*: <input type="text" name="city" required><br>
+        State*: <input type="text" name="state" required><br>
+        ZIP*: <input type="text" name="zip" required><br>
+        Telephone*: <input type="text" name="telephone" required><br>
+        E-mail*: <input type="text" name="email" required><br>
+        Date of Survey*: <input type="text" name="surveyDate" required><br>
+    </fieldset>
+
+    <!-- Campus Experience Section -->
+    <fieldset>
+        <legend>Campus Experience:</legend>
+        What did you like most about the campus:<br>
+        <input type="checkbox" name="campusExperience" value="students"> Students<br>
+        <input type="checkbox" name="campusExperience" value="location"> Location<br>
+        <input type="checkbox" name="campusExperience" value="campus"> Campus<br>
+        <input type="checkbox" name="campusExperience" value="atmosphere"> Atmosphere<br>
+        <input type="checkbox" name="campusExperience" value="dormRooms"> Dorm Rooms<br>
+        <input type="checkbox" name="campusExperience" value="sports"> Sports<br>
+    </fieldset>
+
+    <!-- University Interests Section -->
+    <fieldset>
+        <legend>University Interests:</legend>
+        How did you become interested in our university:<br>
+        <input type="radio" name="universityInterest" value="friends"> Friends<br>
+        <input type="radio" name="universityInterest" value="television"> Television<br>
+        <input type="radio" name="universityInterest" value="internet"> Internet<br>
+        <input type="radio" name="universityInterest" value="other"> Other<br>
+    </fieldset>
+
+    <!-- Additional Details Section -->
+    <fieldset>
+        <legend>Additional Details:</legend>
+        Likelihood of recommending this school:<br>
+        <select name="recommendation">
+            <option value="veryLikely">Very Likely</option>
+            <option value="likely">Likely</option>
+            <option value="unlikely">Unlikely</option>
+        </select><br>
+        Enter numbers for the Raffle* (comma separated):<br>
+        <input type="text" name="raffleNumbers" pattern="\d+(,\d+)*" title="Enter at least ten comma-separated numbers" required><br>
+        Additional comments:<br>
+        <textarea name="additionalComments"></textarea><br>
+    </fieldset>
+
+    <!-- Submit and Cancel Buttons -->
+    <input type="submit" value="Submit">
+    <input type="button" value="Cancel" onclick="window.location.reload();">
+
+</form>
+
+</body>
+</html>

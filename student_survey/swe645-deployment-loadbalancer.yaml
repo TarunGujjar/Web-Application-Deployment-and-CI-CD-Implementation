@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloudprovider.harvesterhci.io/ipam: dhcp
+    field.cattle.io/targetWorkloadIds: '["swe645-namespace/swe645-deployment"]'
+    management.cattle.io/ui-managed: 'true'
+  creationTimestamp: '2024-03-18T17:54:21Z'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cloudprovider.harvesterhci.io/ipam: {}
+            f:field.cattle.io/targetWorkloadIds: {}
+            f:management.cattle.io/ui-managed: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"499df334-5fb9-4c93-9a9b-efa52a139487"}: {}
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: agent
+      operation: Update
+      time: '2024-03-18T17:54:21Z'
+  name: swe645-deployment-loadbalancer
+  namespace: swe645-namespace
+  ownerReferences:
+    - apiVersion: apps/v1
+      controller: true
+      kind: Deployment
+      name: swe645-deployment
+      uid: 499df334-5fb9-4c93-9a9b-efa52a139487
+  resourceVersion: '11794'
+  uid: 6fc196c9-8b29-4f2c-8dea-4f97ed37a446
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.43.36.73
+  clusterIPs:
+    - 10.43.36.73
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: swe645-image
+      nodePort: 31022
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-swe645-namespace-swe645-deployment
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
