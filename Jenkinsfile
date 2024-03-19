@@ -10,7 +10,7 @@ def generateTag() {
 pipeline {
     environment {
         registry = 'tarungujjar/survey'
-        registryCredential = 'Docker'
+        registryCredential = '8ce51330-a1b1-4452-b526-5677a1d0a9d0'
     }
     agent any
 
