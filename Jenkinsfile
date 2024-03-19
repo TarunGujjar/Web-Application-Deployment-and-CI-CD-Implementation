@@ -55,7 +55,7 @@ pipeline {
         stage('Deploying Rancher to single node') {
             steps {
                 script {
-                    sh 'kubectl set image swe645-deployment container-0=tarungujjar/survey:' + tag
+                    sh 'kubectl set image deployment/swe645-deployment container-0=tarungujjar/survey:' + tag
                 }
             }
         }
