@@ -21,7 +21,7 @@ pipeline {
                 script {
                     checkout scm
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf survey.war -C src/main/webapp/. '
+                    sh 'jar -cvf survey.war -C src/main/webapp/ . '
                     // sh 'echo ${BUILD TIMESTAMP}'
                     tag = generateTag()
                     sh 'echo $tag'
