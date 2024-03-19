@@ -24,12 +24,14 @@ pipeline {
                     sh 'rm -rf *.war'
                     sh 'jar -cvf survey.war -C student_survey/src/main/webapp/ . '
                     // sh 'echo ${BUILD TIMESTAMP}'
-                    tag = generateTag()
-                    docker.withRegistry('',registryCredential){
-                    def customImage = docker.build("tarungujjar/survey:"+tag)
                    }
                }
             }
+        }
+        stage('Docker Build') {
+                    tag = generateTag()
+                    docker.withRegistry('',registryCredential){
+                    def customImage = docker.build("tarungujjar/survey:"+tag)
         }
         // Push to DockerHub Stage
         stage('Push to Docker Hub') {
