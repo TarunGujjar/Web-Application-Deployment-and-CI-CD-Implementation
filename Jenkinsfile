@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', registryCredential) {
-                        def customImage = docker.build('tarungujjar/survey:' + tag)
+                        def customImage = docker.build('tarungujjar/survey:' + tag, '--verbose')
                     }
                 }
             }
