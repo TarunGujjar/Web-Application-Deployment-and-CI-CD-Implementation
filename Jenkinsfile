@@ -26,11 +26,12 @@ pipeline {
                 }
             }
         }
+
         stage('Docker Build') {
-                    tag = generateTag()
-                    docker.withRegistry('', registryCredential) {
-                    def customImage = docker.build('tarungujjar/survey:' + tag)
-                    }
+            tag = generateTag()
+            docker.withRegistry('', registryCredential) {
+                def customImage = docker.build('tarungujjar/survey:' + tag)
+            }
         }
         // Push to DockerHub Stage
         stage('Push to Docker Hub') {
