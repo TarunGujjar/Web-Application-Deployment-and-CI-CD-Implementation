@@ -71,7 +71,7 @@ pipeline {
         stage('Deploying Rancher to Load Balancer') {
             steps {
                 script {
-                    sh 'kubectl set image swe645-deployment-loadbalancer n swe645-namespace container-0=tarungujjar/survey:' + tag
+                    sh 'kubectl set image swe645-deployment-loadbalancer -n swe645-namespace container-0=tarungujjar/survey:' + tag
                 }
             }
         }
