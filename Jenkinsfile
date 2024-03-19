@@ -54,7 +54,7 @@ pipeline {
         stage('Kubectl Get All Nodes') {
             steps {
                 script {
-                    sh 'kubectl get all'
+                    sh 'kubectl get deployments'
                 }
             }
         }
