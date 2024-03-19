@@ -5,7 +5,7 @@
 
 @NonCPS
 def generateTag() {
-    return "build-" + new Date().format("yyyyMMdd-HHmmss")
+    return new Date().format("yyyyMMdd-HHmmss")
 }
 // Pipeline Stages
 pipeline {
@@ -49,7 +49,7 @@ pipeline {
         stage('Deploying Rancher to single node') {
             steps {
                 script{
-                sh 'kubectl set image swe645-deployment/swe645-deployment container-0=tarungujjar/survey:'+tag
+                sh 'kubectl set image swe645-deployment container-0=tarungujjar/survey:'+tag
                 }
             }
         }
@@ -57,7 +57,7 @@ pipeline {
         stage('Deploying Rancher to Load Balancer') {
             steps {
                 script{
-                    sh 'kubectl set image swe645-deployment/swe645-deployment-loadbalancer container-0=tarungujjar/survey:'+tag
+                    sh 'kubectl set image swe645-deployment-loadbalancer container-0=tarungujjar/survey:'+tag
                 }
             }
         }
