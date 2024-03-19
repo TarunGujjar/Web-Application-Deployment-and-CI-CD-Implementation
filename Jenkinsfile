@@ -51,6 +51,14 @@ pipeline {
                 }
             }
         }
+        stage('Kubectl Get All Nodes') {
+            steps {
+                script {
+                    sh 'kubectl get all'
+                }
+            }
+        }
+
         // Deploying Rancher to single node
         stage('Deploying Rancher to single node') {
             steps {
