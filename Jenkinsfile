@@ -24,6 +24,7 @@ pipeline {
                     sh 'jar -cvf survey.war -C student_survey/src/main/webapp/ . '
                     // sh 'echo ${BUILD TIMESTAMP}'
                     tag = generateTag()
+                    sh 'echo ${tag}'
                     docker.withRegistry('', registryCredential) {
                         def customImage = docker.build('tarungujjar/survey:' + tag)
                     }
