@@ -63,7 +63,7 @@ pipeline {
         stage('Deploying Rancher to single node') {
             steps {
                 script {
-                    sh 'kubectl set image deployment/swe645-deployment container-0=tarungujjar/survey:' + tag + '-n swe645-namespace'
+                    sh 'kubectl set image deployment/swe645-deployment -n swe645-namespace container-0=tarungujjar/survey:' + tag
                 }
             }
         }
@@ -71,7 +71,7 @@ pipeline {
         stage('Deploying Rancher to Load Balancer') {
             steps {
                 script {
-                    sh 'kubectl set image swe645-deployment-loadbalancer container-0=tarungujjar/survey:' + tag + '-n swe645-namespace'
+                    sh 'kubectl set image swe645-deployment-loadbalancer n swe645-namespace container-0=tarungujjar/survey:' + tag
                 }
             }
         }
