@@ -1,6 +1,6 @@
 //  GroupName: TeamPRTV (Preethi Ranganathan, Mary Rithika Reddy Gade, Tarun Vinay Gujjar, Vikas Halgar Seetharam)
 //  Jenkinsfile defines the pipeline in scm and here, there are 4 stages in
-//  this CICD pipeline: Build, Push to DockerHub, Deploying Rancher to single node, Deploying Rancher to Load Balancer
+//  this CICD pipeline: Build, Docker build, Push to Docker Hub, Kubectl Get All Nodes, Deploying Rancher to single node
 
 @NonCPS
 def generateTag() {
@@ -68,6 +68,5 @@ pipeline {
                 }
             }
         }
-        
     }
 }
