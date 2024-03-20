@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: service
   labels:
-    run: my-nginx
+    run: survey
 spec:
   type: NodePort
   selector:
