@@ -68,14 +68,6 @@ pipeline {
                 }
             }
         }
-        // Deploying Rancher to Load Balancer
-        stage('Deploying Rancher to Load Balancer') {
-            steps {
-                script {
-                   // sh 'kubectl apply -f service.yaml'
-                    sh 'kubectl set image deployment/swe645-deployment/swe645-deployment-loadbalancer -n swe645-namespace container-0=tarungujjar/survey:' + tag
-                }
-            }
-        }
+        
     }
 }
