@@ -70,3 +70,26 @@ Steps to install and setting up Jenkins
   b. Edit the config file: $ vi /home/Jenkins/.kube/config
   c. Paste the Kubeconfig file content in the vi editor.
 - Validate the functionality of kubectl by executing ‘kubectl config current-context’ to retrieve the name of your cluster.
+
+Create Credentials for Git and Docker
+- Goto Jenkins dashboard using 3.231.140.222/:8080 >> Manage Jenkins >> Manage Credentials
+- Click System under Stores.
+- Then click on Global credentials(unrestricted) under Domain.
+- Now add the credentials of GitHub and Docker.
+
+Building Pipeline
+- To create a new pipeline in Jenkins, navigate to "New Items," specify the pipeline name, select Jenkins, and confirm by clicking OK.
+- To ensure Jenkins checks for changes every minute, set up a cron job. Enable "Poll SCM" under "Build Trigger" and input "* * * * *" in the schedule field.
+- We need to connect to our Git Repository by providing git url as cloud credentials.
+- We need to let Jenkins know where we will put the jenkinsfile. In our case it will be in the root directory of the Git as “Jenkinsfile”.
+- Leave the rest as default and save.
+
+Required Plugins and Jenkins file
+- Access the Jenkins configuration panel and navigate to the plugin management section. Install the GitHub plugin, Docker plugins, and Safe Restart plugin.
+- Set up the DockerHub password as an environmental variable to be accessed by the Jenkinsfile. This configuration can be found under the 'Manage Jenkins' section.
+- Develop a Jenkinsfile within the directory where your Dockerfile is located.
+
+Running the Pipeline
+- Implement modifications to your HTML file, then proceed to commit and push the changes to GitHub by using git add, git commit and git push commands.
+- Upon pushing the changes, an automated pipeline will initiate. This pipeline will compile the code into a .war file, generate a Docker image, and subsequently upload it to DockerHub.
+- Following this, the deployment process will commence on Rancher, configuring a single instance and a load balancer. Finally, the alterations made will be reflected in the updated version of our Student Survey Form.
