@@ -48,5 +48,25 @@ Installing docker and Rancher (to setup kubernetes cluster) on AWS EC2.
 - Once the deployments are active, you should be able to access your application by clicking on the NodePort 8080 link under the services of the deployment. Append your WAR file name to the end of the URL.
 
 
-3. Built a CI/CD pipeline using Jenkins
-
+# Built a CI/CD pipeline using Jenkins
+Steps to install and setting up Jenkins
+- Set up an EC2 Instance on AWS specifically for Jenkins.
+  a. Provision an EC2 Instance dedicated to Jenkins on AWS.
+  b. Allocate an Elastic IP for flexible cloud computing and associate it with this EC2 instance.
+  c. Establish a connection.
+- Install Docker and Jenkins on the EC2 Instance using the following commands:
+  Install Docker:
+  a. $ sudo apt-get update
+  b. $ sudo apt install docker.io
+  Install Jenkins:
+  a. Follow the installation steps outlined in this link: https://pkg.jenkins.io/debian/
+- Confirm the installation status of Jenkins by executing ‘systemctl status jenkins’ and accessing a web browser using <Public IP of the Instance> :8080 that is 3.231.140.222/:8080.
+- Deploy kubectl on the Jenkins instance and log in as the Jenkins user using the provided commands:
+  a. Install snapd: $ sudo apt install snapd
+  b. Install kubectl via Snap: $ sudo snap install kubectl --classic
+  c. Switch to Jenkins user: $ sudo su jenkins
+- Within Rancher, navigate to your Cluster, and copy the content of the Kubeconfig file. Paste it into the /home/Jenkins/.kube/config file. Ensure the existence of the ‘.kube’ folder in the Jenkins home directory on the EC2 console. Execute the following commands:
+  a. Create the .kube folder: $ mkdir /home/Jenkins/.kube
+  b. Edit the config file: $ vi /home/Jenkins/.kube/config
+  c. Paste the Kubeconfig file content in the vi editor.
+- Validate the functionality of kubectl by executing ‘kubectl config current-context’ to retrieve the name of your cluster.
